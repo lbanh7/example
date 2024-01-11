@@ -1,7 +1,6 @@
 import streamlit as st
 import numpy as np
 import cv2
-from joblib import load
 import tensorflow as tf
 from camera_input_live import camera_input_live
 
