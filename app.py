@@ -3,7 +3,7 @@ import numpy as np
 import cv2
 from joblib import load
 import tensorflow as tf
-
+from camera_input_live import camera_input_live
 
 st.title("TITLE")
 st.header("Description of the app")
@@ -17,7 +17,8 @@ ALPHABET = ['A', 'B', 'C', 'D', 'E',
 model = tf.keras.models.load_model("best_cnn_model.h5")
 st.write ("Model uploaded!")
 
-f = st.camera_input("Take a picture")
+# f = st.camera_input("Take a picture")
+f = camera_input_live()
 
 height, width = 48, 48
 
@@ -38,3 +39,5 @@ if f is not None:
 
     # Print results
     st.write(f"Translation: {ALPHABET[scores.argmax()]}")
+
+    f = st.camera_input("Take a picture")
