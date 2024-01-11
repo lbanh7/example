@@ -2,7 +2,18 @@ import streamlit as st
 import numpy as np
 import cv2
 import tensorflow as tf
-from camera_input_live import camera_input_live
+
+from streamlit_webrtc import webrtc_streamer
+import av
+
+
+def video_frame_callback(frame):
+    img = frame.to_ndarray(format="bgr24")
+
+    flipped = img[::-1,:,:]
+
+    return av.VideoFrame.from_ndarray(flipped, format="bgr24")
+
 
 st.title("TITLE")
 st.header("Description of the app")
@@ -17,7 +28,8 @@ model = tf.keras.models.load_model("best_cnn_model.h5")
 st.write ("Model uploaded!")
 
 # f = st.camera_input("Take a picture")
-f = camera_input_live()
+# f = camera_input_live()
+f = webrtc_streamer(key="example", video_frame_callback=video_frame_callback)
 
 height, width = 48, 48
 
