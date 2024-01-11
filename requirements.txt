@@ -1,5 +1,6 @@
+tensorflow
 scikit-learn
-opencv-python-headless
+opencv-python
 streamlit
 joblib
 numpy
