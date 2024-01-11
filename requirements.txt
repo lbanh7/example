@@ -1,4 +1,4 @@
-tensorflow==2.11.0
+tensorflow-cpu==2.11.0
 opencv-python-headless==3.4.18.65
 numpy==1.21.6
 protobuf==3.19.6
